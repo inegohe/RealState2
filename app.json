@@ -4,7 +4,7 @@
     "slug": "RealState2",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/favicon.png",
     "scheme": "realstate",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,7 +13,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.ikhos256.RealState2"
@@ -28,10 +28,23 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/splash.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Rubik-Bold.ttf",
+            "./assets/fonts/Rubik-ExtraBold.ttf",
+            "./assets/fonts/Rubik-Medium.ttf",
+            "./assets/fonts/Rubik-Light.ttf",
+            "./assets/fonts/Rubik-Regular.ttf",
+            "./assets/fonts/Rubik-SemiBold.ttf"
+          ]
         }
       ]
     ],
