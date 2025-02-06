@@ -15,13 +15,13 @@ export default function RootLayout() {
     "Rubik-SemiBold": require('../assets/fonts/Rubik-SemiBold.ttf'),
   }) 
 
-  useEffect(() => {
-    if (fontsLoaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
+  // useEffect(() => {
+  //   if (fontsLoaded) {
+  //     SplashScreen.hideAsync();
+  //   }
+  // }, [fontsLoaded]);
 
-  if(!fontsLoaded) return null;
+  //if(!fontsLoaded) return null;
 
   return (
     <GlobalProvider>
