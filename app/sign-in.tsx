@@ -13,9 +13,7 @@ const signIn = () => {
 
   const { refetch, loading, isLoggedIn } = useGlobalContext();
 
-  console.log('signin', loading, isLoggedIn)
-
-  if(!loading && isLoggedIn) return <Redirect href="/" />
+  //if(!loading && isLoggedIn) return <Redirect href="/" />
   
   const handleLogin = async () => {
     const result = await login();
