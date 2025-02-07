@@ -13,7 +13,7 @@ interface GlobalContextType {
     isLoggedIn: boolean;
     user: User | null;
     loading: boolean;
-    //refetch: () => void;
+    refetch: () => void;
 }
 
 const GlobalContext = createContext<GlobalContextType | undefined>
@@ -29,11 +29,15 @@ export const GlobalProvider = ({children}: { children: ReactNode}) => {
     //     fn: getCurrentUser,
     // })
 
+    const refetch = () => {
+        
+    }
+
     const isLoggedIn = false;
 
     const user = null;
 
-    const loading = true
+    const loading = false;
 
     return (
         <GlobalContext.Provider 
@@ -41,7 +45,7 @@ export const GlobalProvider = ({children}: { children: ReactNode}) => {
             isLoggedIn,
             user,
             loading,
-            //refetch
+            refetch
         }}>
         {children}
         </GlobalContext.Provider>
