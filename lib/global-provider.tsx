@@ -14,7 +14,6 @@ interface GlobalContextType {
     user: User | null;
     loading: boolean;
     refetch: () => void;
-    setLoading: any;
 }
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined)
@@ -35,7 +34,7 @@ export const GlobalProvider = ({children}: { children: ReactNode}) => {
 
     // const [loading, setLoading] = useState(true);
 
-    // const isLoggedIn = false;
+    const isLoggedIn = !!user;
 
     // const user = null;
 
@@ -45,8 +44,7 @@ export const GlobalProvider = ({children}: { children: ReactNode}) => {
             isLoggedIn,
             user,
             loading,
-            refetch,
-            setLoading
+            refetch
         }}>
         {children}
         </GlobalContext.Provider>
