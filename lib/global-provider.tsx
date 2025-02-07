@@ -16,8 +16,15 @@ interface GlobalContextType {
     refetch: () => void;
 }
 
+const defaultContextValue: GlobalContextType = {
+    isLoggedIn: false,
+    user: null,
+    loading: false,
+    refetch: () => {},
+  };
+
 const GlobalContext = createContext<GlobalContextType | undefined>
-(undefined)
+(defaultContextValue)
 
 export const GlobalProvider = ({children}: { children: ReactNode}) => {
 
