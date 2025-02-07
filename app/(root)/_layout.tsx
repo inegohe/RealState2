@@ -5,7 +5,6 @@ import { Redirect, Slot } from "expo-router";
 
 export default function AppLayout() {
     const { loading, isLoggedIn } = useGlobalContext();
-    const loading = true;
 
     if(loading){
         return(
