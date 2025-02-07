@@ -1,5 +1,5 @@
 import { createContext, useContext, ReactNode, useState } from "react";
-//import { useAppwrite } from "./useAppwrite";
+import { useAppwrite } from "@/lib/useAppwrite";
 import { getCurrentUser } from '@/lib/appwrite';
 
 interface User {
@@ -17,28 +17,27 @@ interface GlobalContextType {
     setLoading: any;
 }
 
-const GlobalContext = createContext<GlobalContextType | undefined>
-(undefined)
+const GlobalContext = createContext<GlobalContextType | undefined>(undefined)
 
 export const GlobalProvider = ({children}: { children: ReactNode}) => {
 
-    // const {
-    //     data: user,
-    //     loading,
-    //     refetch
-    // } = useAppwrite({
-    //     fn: getCurrentUser,
-    // })
+    const {
+        data: user,
+        loading,
+        refetch
+    } = useAppwrite({
+        fn: getCurrentUser,
+    })
 
-    const refetch = () => {
+    // const refetch = () => {\
 
-    }
+    // }
 
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
-    const isLoggedIn = false;
+    // const isLoggedIn = false;
 
-    const user = null;
+    // const user = null;
 
     return (
         <GlobalContext.Provider 
