@@ -24,7 +24,7 @@ const signIn = () => {
 
     if(result) {
       console.log('calling refetch')
-      refetch();
+      //refetch();
     } else {
       Alert.alert('Error', 'Failed to Login');
     }
