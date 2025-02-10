@@ -1,64 +1,59 @@
-import { createContext, useContext, ReactNode, useState } from "react";
-import { useAppwrite } from "@/lib/useAppwrite";
-import { getCurrentUser } from '@/lib/appwrite';
+import React, { createContext, useContext, ReactNode } from "react";
 
-interface User {
-    $id: string;
-    name: string;
-    email: string;
-    avatar: string;
-}
+import { getCurrentUser } from "./appwrite";
+import { useAppwrite } from "./useAppwrite";
 
 interface GlobalContextType {
-    isLoggedIn: boolean;
-    user: User | null;
-    loading: boolean;
-    refetch: () => void;
+  isLogged: boolean;
+  user: User | null;
+  loading: boolean;
+  refetch: () => void;
 }
 
-const GlobalContext = createContext<GlobalContextType | undefined>(undefined)
+interface User {
+  $id: string;
+  name: string;
+  email: string;
+  avatar: string;
+}
 
-export const GlobalProvider = ({children}: { children: ReactNode}) => {
+const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
-    const {
-        data: user,
+interface GlobalProviderProps {
+  children: ReactNode;
+}
+
+export const GlobalProvider = ({ children }: GlobalProviderProps) => {
+  const {
+    data: user,
+    loading,
+    refetch,
+  } = useAppwrite({
+    fn: getCurrentUser,
+  });
+
+  const isLogged = !!user;
+
+  return (
+    <GlobalContext.Provider
+      value={{
+        isLogged,
+        user,
         loading,
-        refetch
-    } = useAppwrite({
-        fn: getCurrentUser,
-    })
-
-    // const refetch = () => {\
-
-    // }
-
-    // const [loading, setLoading] = useState(true);
-
-    const isLoggedIn = !!user;
-
-    // const user = null;
-
-    return (
-        <GlobalContext.Provider 
-        value={{
-            isLoggedIn,
-            user,
-            loading,
-            refetch
-        }}>
-        {children}
-        </GlobalContext.Provider>
-    )
-}
+        refetch,
+      }}
+    >
+      {children}
+    </GlobalContext.Provider>
+  );
+};
 
 export const useGlobalContext = (): GlobalContextType => {
-    const context = useContext(GlobalContext);
+  const context = useContext(GlobalContext);
+  if (!context)
+    throw new Error("useGlobalContext must be used within a GlobalProvider");
 
-    if(!context) {
-        throw new Error('useGlobalContext must be within a GlobalProvider');
-    }
-
-    return context
-}
+  return context;
+};
 
 export default GlobalProvider;

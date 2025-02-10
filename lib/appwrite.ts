@@ -86,7 +86,7 @@ export async function getCurrentUser() {
         return null;
     }
     catch(error){
-        console.error(error + 'here');
+        console.error(error);
         return false;
     }
 }
